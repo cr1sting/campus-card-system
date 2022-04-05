@@ -17,12 +17,12 @@ void ManageAnalysis(CWindow *wins,CCard *cards)
     system("cls");
     while(true)
     {
-        cout<<"0ã€é€€å‡ºç¨‹åº"<<endl;
-        cout<<"1ã€æ˜¾ç¤ºç”¨æˆ·ä¿¡æ¯"<<endl;
-        cout<<"2ã€æ¸…ç©ºæ“ä½œæ—¥å¿—"<<endl;
+        cout<<"0¡¢ÍË³ö³ÌĞò"<<endl;
+        cout<<"1¡¢ÏÔÊ¾ÓÃ»§ĞÅÏ¢"<<endl;
+        cout<<"2¡¢Çå¿Õ²Ù×÷ÈÕÖ¾"<<endl;
       
-        cout<<"3ã€ä¿®æ”¹é™æ€æ—¶é—´"<<endl;
-        cout<<"è¯·è¾“å…¥æŒ‡ä»¤ï¼š";
+        cout<<"3¡¢ĞŞ¸Ä¾²Ì¬Ê±¼ä"<<endl;
+        cout<<"ÇëÊäÈëÖ¸Áî£º";
         cin>>order;
         if(order==0) break;
         switch(order)
@@ -40,40 +40,40 @@ void ManageAnalysis(CWindow *wins,CCard *cards)
             ChangeTime();
             break;
         default:
-            cout<<"æŒ‡ä»¤é”™è¯¯"<<endl;
+            cout<<"Ö¸Áî´íÎó"<<endl;
         }
         system("pause");
         system("cls");
     }
 }
 
-void WriteLog(string log)//å°†æ“ä½œæ—¥å¿—å†™å…¥log.txtæ–‡ä»¶
+void WriteLog(string log)//½«²Ù×÷ÈÕÖ¾Ğ´Èëlog.txtÎÄ¼ş
 {
     
     
     fstream fout("opr_log.txt",ios_base::out|ios_base::app);
     if(!fout.is_open())
     {
-        //cout<<"æ—¥å¿—æ–‡ä»¶å¼€å¯é”™è¯¯"<<endl;
+        //cout<<"ÈÕÖ¾ÎÄ¼ş¿ªÆô´íÎó"<<endl;
         return;
     }
     fout<<log<<"\n";
     fout.close();
 }
 
-void ClearLogs(string filename)//æ¸…ç©ºæ–‡ä»¶
+void ClearLogs(string filename)//Çå¿ÕÎÄ¼ş
 {
     ofstream file_writer(filename, ios_base::out);
 }
 
 void ShowUserMessage()
 {
-    cout<<"å½“å‰å¼€å¡æ€»æˆ·æ•°ï¼š"<<GetUserMessage(2)<<endl;
-    cout<<"ç›®å‰å‘å¡æ€»å¡æ•°ï¼š"<<GetUserMessage(1)<<endl;
+    cout<<"µ±Ç°¿ª¿¨×Ü»§Êı£º"<<GetUserMessage(2)<<endl;
+    cout<<"Ä¿Ç°·¢¿¨×Ü¿¨Êı£º"<<GetUserMessage(1)<<endl;
     return;
 }
 
-void OperateS(CWindow * wins,CCard * cards)//æ¶ˆè´¹ç”³è¯·çš„æˆåŠŸæ¬¡æ•°ä¸å¤±è´¥æ¬¡æ•°
+void OperateS(CWindow * wins,CCard * cards)//Ïû·ÑÉêÇëµÄ³É¹¦´ÎÊıÓëÊ§°Ü´ÎÊı
 {
    
     char        check_code[3];
@@ -82,24 +82,24 @@ void OperateS(CWindow * wins,CCard * cards)//æ¶ˆè´¹ç”³è¯·çš„æˆåŠŸæ¬¡æ•°ä¸å¤±è´
     ifstream  fin("cz002.txt");
     string      time1,time2;
 
-    //fin_oprå¼€å¯æ–‡ä»¶çŠ¶æ€åˆ¤æ–­
+    //fin_opr¿ªÆôÎÄ¼ş×´Ì¬ÅĞ¶Ï
     if(!fin.is_open())
     {
-        cout<<"æ–‡ä»¶å¼€å¯é”™è¯¯"<<endl;
+        cout<<"ÎÄ¼ş¿ªÆô´íÎó"<<endl;
         return;
     }
     fin.getline(check_code,3);
     if(strcmp(check_code,"CZ")!=0)
     {
-        cout<<"æ–‡ä»¶è¯»å–é”™è¯¯"<<endl;
+        cout<<"ÎÄ¼ş¶ÁÈ¡´íÎó"<<endl;
         return;
     }
     if(cur->next==nullptr)
     {
-        cout<<"æ¶ˆè´¹æ•°æ®æœªå¯¼å…¥"<<endl;
+        cout<<"Ïû·ÑÊı¾İÎ´µ¼Èë"<<endl;
         return ;
     }
-    //åˆ†æ®µæ“ä½œ
+    //·Ö¶Î²Ù×÷
     start_t=clock();
     time1="20210906";
     time2="20210927";
@@ -126,10 +126,10 @@ void OperateS(CWindow * wins,CCard * cards)//æ¶ˆè´¹ç”³è¯·çš„æˆåŠŸæ¬¡æ•°ä¸å¤±è´
     ManageCards(cards,fin,time1);
     cur=FormApplications(wins,cards,cur,time2);
     end_t=clock();
-    cout<<"æ“ä½œå…±èŠ±è´¹æ—¶é—´ï¼š"<<(double)(end_t-start_t)/CLOCKS_PER_SEC<<endl;
-    //æ“ä½œç»“æŸ
+    cout<<"²Ù×÷¹²»¨·ÑÊ±¼ä£º"<<(double)(end_t-start_t)/CLOCKS_PER_SEC<<endl;
+    //²Ù×÷½áÊø
     fin.close();
-    //é‡Šæ”¾é“¾è¡¨å ç”¨ç©ºé—´
+    //ÊÍ·ÅÁ´±íÕ¼ÓÃ¿Õ¼ä
     SNode *p=gAppHead->next;
     cur=gAppHead->next;
     while(cur!=nullptr&&cur->next!=nullptr)
@@ -140,30 +140,30 @@ void OperateS(CWindow * wins,CCard * cards)//æ¶ˆè´¹ç”³è¯·çš„æˆåŠŸæ¬¡æ•°ä¸å¤±è´
     }
 }
 
-void SortApplications()//å°†å¤§æ–‡ä»¶åˆ†æˆå°æ–‡ä»¶
+void SortApplications()//½«´óÎÄ¼ş·Ö³ÉĞ¡ÎÄ¼ş
 {
    
-    int             gTotalCards=0;//å­æ–‡ä»¶æ•°ç›®
-    char         num[4];//å­˜å‚¨çª—å£å·
-    char         temp[35];//ä¸´æ—¶å‚¨å­˜
-    string       filename="win";//æ–‡ä»¶å
+    int             gTotalCards=0;//×ÓÎÄ¼şÊıÄ¿
+    char         num[4];//´æ´¢´°¿ÚºÅ
+    char         temp[35];//ÁÙÊ±´¢´æ
+    string       filename="win";//ÎÄ¼şÃû
     ifstream  fin("xf014.txt");
     ofstream fout;
-    vector<string> files;//å­˜å‚¨å­æ–‡ä»¶åå®¹å™¨
-    //å°†å¤§æ–‡ä»¶åˆ†å‰²ä¸ºå­æ–‡ä»¶å¹¶ä¿®æ”¹è®°å½•æ ¼å¼ï¼Œè®°å½•æ›´åŠ äººæ€§åŒ–
-    fin.getline(temp,4);//è¯»å–æ–‡ä»¶å¤´
+    vector<string> files;//´æ´¢×ÓÎÄ¼şÃûÈİÆ÷
+    //½«´óÎÄ¼ş·Ö¸îÎª×ÓÎÄ¼ş²¢ĞŞ¸Ä¼ÇÂ¼¸ñÊ½£¬¼ÇÂ¼¸ü¼ÓÈËĞÔ»¯
+    fin.getline(temp,4);//¶ÁÈ¡ÎÄ¼şÍ·
     if(strcmp(temp,"XF")!=0)
     {
-        cout<<"æ–‡ä»¶è¯»å–é”™è¯¯"<<endl;
+        cout<<"ÎÄ¼ş¶ÁÈ¡´íÎó"<<endl;
         return;
     }
     while(fin.peek()!=EOF)
     {
-        //è¯»å–çª—å£ä»£å·ï¼Œç”±æ­¤åˆ›å»ºå­æ–‡ä»¶å
+        //¶ÁÈ¡´°¿Ú´úºÅ£¬ÓÉ´Ë´´½¨×ÓÎÄ¼şÃû
         if(fin.peek()=='W')
         {
             gTotalCards++;
-            //è¯»å–å†…å®¹ä¸ºçª—å£å·çš„æƒ…å†µ
+            //¶ÁÈ¡ÄÚÈİÎª´°¿ÚºÅµÄÇé¿ö
             fout.close();
             filename="win";
             fin.getline(num,4);
@@ -172,34 +172,34 @@ void SortApplications()//å°†å¤§æ–‡ä»¶åˆ†æˆå°æ–‡ä»¶
             files.push_back(filename);
             fout.open(filename,ios::app|ios::out);
             if(fout.fail())
-                cout<<"å¤±è´¥"<<endl;
+                cout<<"Ê§°Ü"<<endl;
         }
         else
         {
             fin.getline(temp,35);
-            string tempstr(temp);//ä¸´æ—¶å­˜å‚¨
+            string tempstr(temp);//ÁÙÊ±´æ´¢
             ReshapeApplications(tempstr,num+1);
             fout<<tempstr<<"\n";
         }
     }
-    cout<<"æ–‡ä»¶åˆ†è£…å®Œæ¯•ï¼Œæ­£åœ¨å¤šè·¯å½’å¹¶æ’åº..."<<endl;
+    cout<<"ÎÄ¼ş·Ö×°Íê±Ï£¬ÕıÔÚ¶àÂ·¹é²¢ÅÅĞò..."<<endl;
     fin.close();
     fout.close();
 
     SNode * p=gAppHead;
-    //å¯¹æ¯ä¸€ä¸ªæ–‡ä»¶å»ºç«‹æµæŒ‡é’ˆ
+    //¶ÔÃ¿Ò»¸öÎÄ¼ş½¨Á¢Á÷Ö¸Õë
     ifstream fins[1000];
     for(int i=0; i<gTotalCards; i++)
         fins[i].open(files[i]);
     SBox m[1000];
-    //é€šè¿‡æµè¯»å…¥å†…å®¹
+    //Í¨¹ıÁ÷¶ÁÈëÄÚÈİ
     for(int i=0; i<gTotalCards; i++)
     {
         m[i].index=i;
         fins[i].getline(m[i].str,40);
     }
     int cur=0;
-    //å¤šè·¯å½’å¹¶æ’åº
+    //¶àÂ·¹é²¢ÅÅĞò
     sort(m+cur,m+gTotalCards,compare);
     while(cur<gTotalCards)
     {
@@ -208,18 +208,18 @@ void SortApplications()//å°†å¤§æ–‡ä»¶åˆ†æˆå°æ–‡ä»¶
             cur++;
             continue;
         }
-        //å»ºç«‹é“¾è¡¨ç»“ç‚¹
+        //½¨Á¢Á´±í½áµã
         SNode * temp_node=new SNode;
         strcpy(temp_node->str,m[cur].str);
         p->next=temp_node;
         p=temp_node;
-        //è½½å…¥ä¸‹ä¸€æ¡æ•°æ®
+        //ÔØÈëÏÂÒ»ÌõÊı¾İ
         fins[m[cur].index].getline(m[cur].str,40);
         if(gTotalCards-cur>1)
             ReSortBox(m,cur,gTotalCards);
     }
-    //åˆ é™¤ä¸´æ—¶æ–‡ä»¶
-    cout<<"è¯»å…¥å®Œæ¯•"<<endl;
+    //É¾³ıÁÙÊ±ÎÄ¼ş
+    cout<<"¶ÁÈëÍê±Ï"<<endl;
     for(int i=0; i<gTotalCards; i++)
     {
         fins[i].close();
@@ -227,7 +227,7 @@ void SortApplications()//å°†å¤§æ–‡ä»¶åˆ†æˆå°æ–‡ä»¶
     }
 }
 
-bool compare(SBox a,SBox b)//æ¯”è¾ƒå­—ç¬¦ä¸²å¤§å°
+bool compare(SBox a,SBox b)//±È½Ï×Ö·û´®´óĞ¡
 {
     
     if(strcmp(a.str,b.str)<0)
@@ -242,7 +242,7 @@ bool compare1(SBox a,SBox b)
     else return true;
 }
 
-bool compare2(CCard &card1,CCard &card2) //å­—ç¬¦ä¸²æ¯”è¾ƒï¼ŒæŒ‰å­¦å·è¿›è¡Œæ¯”è¾ƒ
+bool compare2(CCard &card1,CCard &card2) //×Ö·û´®±È½Ï£¬°´Ñ§ºÅ½øĞĞ±È½Ï
 {
    
     if(card1.getMessage(STUIDINDEX)<card2.getMessage(STUIDINDEX))
@@ -250,7 +250,7 @@ bool compare2(CCard &card1,CCard &card2) //å­—ç¬¦ä¸²æ¯”è¾ƒï¼ŒæŒ‰å­¦å·è¿›è¡Œæ¯”è
     else return false;
 }
 
-bool compare3(CCard &card1,CCard &card2)//å­—ç¬¦ä¸²æ¯”è¾ƒï¼ŒæŒ‰å¡å·è¿›è¡Œæ¯”è¾ƒ
+bool compare3(CCard &card1,CCard &card2)//×Ö·û´®±È½Ï£¬°´¿¨ºÅ½øĞĞ±È½Ï
 {
     
     if(card1.getMessage(IDINDEX)<card2.getMessage(IDINDEX))
@@ -264,7 +264,7 @@ bool compare4(SBox* a,SBox* b)
         return true;
     else return false;
 }
-void ReshapeApplications(string & str,string  num)//æ‰¹é‡æ“ä½œç®¡ç†
+void ReshapeApplications(string & str,string  num)//ÅúÁ¿²Ù×÷¹ÜÀí
 {
     string temp;
     temp=str.substr(8,8)+str.substr(17,9)+str.substr(0,8)+num+str.substr(25);
@@ -297,7 +297,7 @@ bool PutInVector(vector<SBox> &box,string id)
     return false;
 }
 
-void EncryptApplications()//å°†å®‰å…¨ç”³è¯·æ”¾å…¥æ–‡ä»¶
+void EncryptApplications()//½«°²È«ÉêÇë·ÅÈëÎÄ¼ş
 {
    
     ifstream fin("secure.txt");
@@ -312,10 +312,10 @@ void EncryptApplications()//å°†å®‰å…¨ç”³è¯·æ”¾å…¥æ–‡ä»¶
         fin.getline(log,48,';');
         fin.getline(safe,5);
         if(strcmp(safe,FormSafeCode(log).data())!=0)
-            cout<<"ç¬¬"<<lines<<"è¡Œæ•°æ®é”™è¯¯ï¼Œå‘ç”Ÿç¯¡æ”¹"<<endl;
+            cout<<"µÚ"<<lines<<"ĞĞÊı¾İ´íÎó£¬·¢Éú´Û¸Ä"<<endl;
         if(atoi(flow)!=step+1)
         {
-            cout<<"ç¬¬"<<lines-1<<"è¡Œæ•°æ®ä¸ç¬¬"<<lines<<"è¡Œæ•°æ®ä¹‹é—´å‘ç”Ÿä¸æ­£å¸¸è·³è·ƒï¼Œè¯·æ£€æŸ¥"<<endl;
+            cout<<"µÚ"<<lines-1<<"ĞĞÊı¾İÓëµÚ"<<lines<<"ĞĞÊı¾İÖ®¼ä·¢Éú²»Õı³£ÌøÔ¾£¬Çë¼ì²é"<<endl;
             step=atoi(flow);
             lines++;
             continue;
@@ -325,7 +325,7 @@ void EncryptApplications()//å°†å®‰å…¨ç”³è¯·æ”¾å…¥æ–‡ä»¶
     }
 }
 
-string FormSafeCode(string log)//è®°å½•å››ä½æ ¡éªŒç 
+string FormSafeCode(string log)//¼ÇÂ¼ËÄÎ»Ğ£ÑéÂë
 {
     
     string code="!!!!";
